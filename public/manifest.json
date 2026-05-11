@@ -1,0 +1,18 @@
+{
+  "name": "574 Creatives",
+  "short_name": "574",
+  "description": "A movement for creatives in the 574.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070707",
+  "theme_color": "#ff7a1a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
