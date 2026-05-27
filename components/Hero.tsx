@@ -51,26 +51,27 @@ export default function Hero() {
         />
       </div>
 
+      {/* Eyebrow — pinned just below the navbar, always visible */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute top-[4.5rem] sm:top-[5.5rem] left-5 sm:left-8 flex items-center gap-3 z-10"
+      >
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full rounded-full bg-ember-400 opacity-75 animate-ping" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-ember-400" />
+        </span>
+        <span className="text-xs sm:text-sm uppercase tracking-[0.3em] text-cream/60 font-mono">
+          A movement for creatives in the 574
+        </span>
+      </motion.div>
+
+      {/* Headline + CTAs — stays bottom-aligned */}
       <motion.div
         style={reduce ? undefined : { y, opacity }}
         className="relative max-w-7xl mx-auto px-5 sm:px-8 w-full"
       >
-        {/* Top eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center gap-3 mb-8 sm:mb-12"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-ember-400 opacity-75 animate-ping" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-ember-400" />
-          </span>
-          <span className="text-xs sm:text-sm uppercase tracking-[0.3em] text-cream/60 font-mono">
-            A movement for creatives in the 574
-          </span>
-        </motion.div>
-
         {/* Headline */}
         <h1 className="font-display font-semibold tracking-tightest leading-[0.92] text-[14vw] sm:text-[10vw] md:text-[8.5vw] lg:text-[7.5vw] xl:text-[140px]">
           {words.map((w, i) => (
