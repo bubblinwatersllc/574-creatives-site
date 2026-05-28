@@ -78,7 +78,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-6 sm:mb-8"
+          className="mb-6 sm:mb-8 md:hidden"
         >
           <Image
             src="/logo.png"
