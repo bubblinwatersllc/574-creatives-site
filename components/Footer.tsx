@@ -1,6 +1,7 @@
 "use client";
 
 import { Instagram, Youtube, Mail, Globe } from "lucide-react";
+import Image from "next/image";
 
 const cols = [
   {
@@ -30,14 +31,19 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-20">
         <div className="grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
-            <a
-              href="#top"
-              className="font-display text-3xl sm:text-4xl font-semibold tracking-tightest"
-            >
-              <span className="warm-text">574</span>{" "}
-              <span className="text-cream">Creatives</span>
+            <a href="#top" className="inline-block">
+              <Image
+                src="/logo.png"
+                alt="574 Creatives"
+                width={200}
+                height={80}
+                className="h-16 sm:h-20 w-auto object-contain"
+              />
             </a>
-            <p className="mt-6 text-cream/60 leading-relaxed max-w-md">
+            <p className="mt-2 text-xs uppercase tracking-[0.25em] font-mono text-ember-300/70">
+              Built Different
+            </p>
+            <p className="mt-5 text-cream/60 leading-relaxed max-w-md">
               A nonprofit movement connecting artists, entrepreneurs, and
               visionaries through culture, collaboration, and opportunity in
               South Bend and the broader Michiana region.
@@ -100,7 +106,7 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs uppercase tracking-[0.25em] font-mono text-cream/40">
           <p>© {new Date().getFullYear()} 574 Creatives. All rights reserved.</p>
-          <p>Bridging Creativity in the 574.</p>
+          <p>Built Different.</p>
         </div>
       </div>
     </footer>

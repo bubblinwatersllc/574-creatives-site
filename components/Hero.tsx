@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import Image from "next/image";
 import { useRef } from "react";
 
 export default function Hero() {
@@ -51,7 +52,7 @@ export default function Hero() {
         />
       </div>
 
-      {/* Eyebrow — pinned just below the navbar, always visible */}
+      {/* Eyebrow — pinned just below the navbar */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -63,7 +64,7 @@ export default function Hero() {
           <span className="relative inline-flex h-2 w-2 rounded-full bg-ember-400" />
         </span>
         <span className="text-xs sm:text-sm uppercase tracking-[0.3em] text-cream/60 font-mono">
-          A movement for creatives in the 574
+          Built Different
         </span>
       </motion.div>
 
@@ -72,6 +73,23 @@ export default function Hero() {
         style={reduce ? undefined : { y, opacity }}
         className="relative max-w-7xl mx-auto px-5 sm:px-8 w-full"
       >
+        {/* Logo mark above headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 sm:mb-8"
+        >
+          <Image
+            src="/logo.png"
+            alt="574 Creatives"
+            width={180}
+            height={72}
+            className="h-16 sm:h-20 w-auto object-contain"
+            priority
+          />
+        </motion.div>
+
         {/* Headline */}
         <h1 className="font-display font-semibold tracking-tightest leading-[0.92] text-[14vw] sm:text-[10vw] md:text-[8.5vw] lg:text-[7.5vw] xl:text-[140px]">
           {words.map((w, i) => (

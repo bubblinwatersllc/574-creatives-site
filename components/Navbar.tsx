@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const links = [
   { label: "About", href: "/#about" },
@@ -36,12 +37,15 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
-        <a
-          href="/"
-          className="font-display text-lg sm:text-xl font-semibold tracking-tightest"
-        >
-          <span className="warm-text">574</span>
-          <span className="text-cream/90"> Creatives</span>
+        <a href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="574 Creatives"
+            width={120}
+            height={48}
+            className="h-10 sm:h-12 w-auto object-contain"
+            priority
+          />
         </a>
 
         <ul className="hidden md:flex items-center gap-8 text-sm text-cream/70">
