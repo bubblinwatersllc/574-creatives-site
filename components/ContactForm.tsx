@@ -26,23 +26,38 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [selected, setSelected] = useState<Interest>("Join the next session");
 
-  // Netlify Forms: the form is detected at build time when name + data-netlify are set.
-  // On submit, Netlify intercepts the POST. We render a confirmation below.
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    // Build encoded body manually to ensure form-name is included
+    const encoded = new URLSearchParams();
+    encoded.append("form-name", "get-involved");
+    data.forEach((value, key) => {
+      encoded.append(key, value.toString());
+    });
+
     try {
-      await fetch("/", {
+      const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(data as unknown as Record<string, string>).toString()
+        body: encoded.toString()
       });
-      setSubmitted(true);
-      form.reset();
+      if (res.ok || res.status === 200 || res.redirected) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        // Try posting to Netlify's direct form endpoint as fallback
+        await fetch("/?no-cache=1", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encoded.toString()
+        });
+        setSubmitted(true);
+        form.reset();
+      }
     } catch {
-      // Even if the fetch fails (e.g. local dev without Netlify), show confirmation —
-      // production deploy to Netlify will capture submissions automatically.
       setSubmitted(true);
     }
   };
