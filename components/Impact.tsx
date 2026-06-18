@@ -1,51 +1,7 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal";
 import SectionLabel from "./SectionLabel";
-
-const stats = [
-  { value: 1200, suffix: "+", label: "Creatives Engaged" },
-  { value: 60, suffix: "+", label: "Sessions Hosted" },
-  { value: 45, suffix: "K", label: "Hours of Collaboration" },
-  { value: 25, suffix: "+", label: "Local Partners" }
-];
-
-function Counter({
-  to,
-  suffix
-}: {
-  to: number;
-  suffix?: string;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const reduce = useReducedMotion();
-  const [n, setN] = useState(reduce ? to : 0);
-
-  useEffect(() => {
-    if (!inView || reduce) return;
-    let raf = 0;
-    const start = performance.now();
-    const duration = 1800;
-    const tick = (now: number) => {
-      const p = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setN(Math.round(to * eased));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, to, reduce]);
-
-  return (
-    <span ref={ref}>
-      {n.toLocaleString()}
-      {suffix}
-    </span>
-  );
-}
 
 export default function Impact() {
   return (
@@ -63,40 +19,29 @@ export default function Impact() {
 
         <Reveal delay={0.05}>
           <h2 className="mt-6 font-display font-semibold tracking-tightest leading-[0.95] text-4xl sm:text-6xl md:text-7xl max-w-4xl">
-            The numbers are real — but{" "}
-            <span className="warm-text">the people are the proof.</span>
+            The numbers are coming —{" "}
+            <span className="warm-text">we&apos;re just getting started.</span>
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12 sm:gap-y-16">
-          {stats.map((s, i) => (
-            <Reveal key={s.label} delay={0.05 + i * 0.08}>
-              <div className="border-t border-white/10 pt-6">
-                <div className="font-display font-semibold tracking-tightest text-5xl sm:text-7xl text-cream">
-                  <Counter to={s.value} suffix={s.suffix} />
-                </div>
-                <p className="mt-4 text-cream/60 text-sm sm:text-base uppercase tracking-[0.2em] font-mono">
-                  {s.label}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={0.15}>
+          <p className="mt-8 max-w-2xl text-cream/60 text-lg leading-relaxed">
+            Real impact takes time to measure. We&apos;re in the field, doing
+            the work — the data will catch up. Check back as we grow.
+          </p>
+        </Reveal>
 
-        {/* Quote */}
-        <Reveal delay={0.2}>
-          <motion.figure className="mt-24 sm:mt-32 max-w-4xl mx-auto text-center">
-            <div className="text-ember-400 text-5xl font-display leading-none">
-              &ldquo;
-            </div>
-            <blockquote className="mt-2 font-display font-medium text-2xl sm:text-3xl md:text-4xl tracking-tight leading-[1.2] text-cream/95">
-              574 Creatives didn&apos;t just give me a stage — they gave me a
-              city that finally felt like mine. That&apos;s what bridges do.
-            </blockquote>
-            <figcaption className="mt-8 text-sm uppercase tracking-[0.25em] font-mono text-cream/50">
-              — Local Artist · South Bend
-            </figcaption>
-          </motion.figure>
+        {/* Pulsing Coming Soon badge */}
+        <Reveal delay={0.25}>
+          <div className="mt-12 inline-flex items-center gap-2">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-ember-500 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-ember-500" />
+            </span>
+            <span className="text-xs uppercase tracking-[0.3em] font-mono text-ember-400">
+              Impact metrics coming soon
+            </span>
+          </div>
         </Reveal>
       </div>
     </section>
