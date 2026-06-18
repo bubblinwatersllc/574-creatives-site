@@ -63,22 +63,20 @@ export default function Bridge() {
 
           </div>
 
-          {/* Logo panel */}
+          {/* Logo */}
           <Reveal delay={0.1}>
             <motion.div
               style={reduce ? undefined : { y: yShift }}
-              className="relative flex items-center justify-center aspect-[5/4] w-full"
+              className="relative flex items-center justify-center py-8"
             >
-              {/* Subtle ember glow behind logo */}
-              <div className="absolute inset-0 rounded-3xl bg-ember-600/5 border border-ember-500/10" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[70%] w-[70%] bg-ember-500/10 blur-[60px] rounded-full" />
+              {/* Soft ember glow — no border, no card */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[60%] w-[60%] bg-ember-500/15 blur-[80px] rounded-full pointer-events-none" />
               <Image
-                src="/logo.png"
+                src="/logo-transparent.png"
                 alt="574 Creatives"
                 width={400}
-                height={300}
-                className="relative w-3/4 max-w-xs sm:max-w-sm h-auto object-contain"
-                style={{ mixBlendMode: "screen" }}
+                height={400}
+                className="relative w-3/4 max-w-xs sm:max-w-sm h-auto object-contain drop-shadow-[0_0_40px_rgba(255,146,51,0.3)]"
               />
             </motion.div>
           </Reveal>
