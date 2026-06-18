@@ -49,7 +49,7 @@ export default function About() {
                 </p>
                 <ul className="space-y-5 text-cream/80">
                   {[
-                    "Champion local creatives loudly and consistently.",
+                    "Amplify 574 voices on every stage.",
                     "Create real pathways from passion to profession.",
                     "Build a creative economy the 574 can be proud of.",
                     "Center community, collaboration, and culture above all."
