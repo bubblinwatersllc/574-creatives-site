@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Netlify Forms</title></head>
+<body>
+  <!-- Hidden form so Netlify detects it at build time (required for Next.js) -->
+  <form name="get-involved" netlify netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="get-involved" />
+    <input type="text" name="bot-field" />
+    <input type="text" name="interest" />
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="text" name="craft" />
+    <textarea name="message"></textarea>
+  </form>
+</body>
+</html>
